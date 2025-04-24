@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keep Sleeping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #111;
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .emoji {
+      font-size: 80px;
+      margin-bottom: 40px;
+    }
+    .garden {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .flower {
+      width: 20px;
+      height: 20px;
+      background: pink;
+      box-shadow: 0 0 0 2px hotpink;
+    }
+    .heart {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 75%, 15% 100%, 0 35%);
+      animation: rise 3s linear infinite;
+    }
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Keep sleeping,<br>anyways I'm at u</h1>
+  <div class="emoji">😠</div>
+
+  <div class="garden" id="garden">
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+    <div class="flower"></div>
+  </div>
+
+  <script>
+    const garden = document.getElementById("garden");
+    function spawnHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.bottom = `0px`;
+      garden.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 3000);
+    }
+    setInterval(spawnHeart, 300);
+  </script>
+</body>
+</html>
